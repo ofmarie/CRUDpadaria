@@ -1,13 +1,12 @@
 <?php
-    // Incluir o arquivo para carregamento das classes
     require "../../autoload.php";
 
-    // Instanciar um objeto da classe DAO
-    $dao = new CategoriaDAO();
+    $dao = new PagamentoDAO();
+    $pagamento = $dao->find($_GET['id']);
 ?>
 
 <!doctype html>
-<html lang="en" data-bs-theme="auto">
+<html lang="pt-br" data-bs-theme="auto">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -367,23 +366,28 @@
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
-            <h1 class="h2">Gerenciamento de Categoria</h1>
-            
+            <h1 class="h2">Cadastrar Pagamento</h1>
+        
           </div>
           
+          
           <div class="table-responsive small">
-            <table class="table table-hover">
-                <tr>
-                    <th>ID</th>
-                    <th>Descrição</th>
-                </tr>
-                <?php foreach($dao->read() as $categoria) : ?>
-                    <tr>
-                        <td><?= $categoria->getId() ?></td>
-                        <td><?= $categoria->getDescricao() ?></td>
-                    </tr>
-                <?php endforeach ?>
-            </table>
+            <form action="update.php" method="post">
+                <div class="form-group">
+                    <label for="nome">Tipo Pagamento</label>
+                    <input type="text" name="tipoPagamento" value="<?=  $pagamento->getTipoPagamento() ?>" class="form-control">
+                </div>
+                
+               
+
+                <input type="hidden" name="id" value="<?=  $pagamento->getId() ?>">
+
+                <div class="form-group">
+                    <input type="reset" value="Limpar" class="btn">
+                    <input type="submit" value="Salvar" class="btn btn-info">
+                </div>
+
+            </form>
           </div>
         </main>
       </div>

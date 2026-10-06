@@ -25,6 +25,7 @@
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
     <meta name="theme-color" content="#712cf9" />
     <link href="../../css/dashboard.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -369,6 +370,9 @@
             <h1 class="h2">Padaria Gerenciamento de Clientes</h1>
             
           </div>
+          <p>
+            <a href="create.php">Novo Clente</a>
+          </p>
           
           <div class="table-responsive small">
           <table class='table table-hover'>
@@ -376,12 +380,21 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Telefone</th>
+                <th>Ações</th>
             </tr>
             <?php foreach($dao->read() as $cliente) : ?>
                 <tr>
                     <td><?= $cliente->getId() ?></td>
                     <td><?= $cliente->getNome() ?></td>
                     <td><?= $cliente->getTelefone() ?></td>
+                    <td>
+                      <a  title="Editar" class="link-success" href="edit.php?id=<?= $cliente->getId() ?>">
+                        <i class="bi bi-pencil-square"></i>
+                      </a>
+                      <a title="Excluir" class="link-danger"  href="destroy.php?id=<?= $cliente->getId() ?>">
+                        <i class="bi bi-trash3"></i>
+                      </a>
+                    </td>
                 </tr>
             <?php endforeach ?>
           </table>

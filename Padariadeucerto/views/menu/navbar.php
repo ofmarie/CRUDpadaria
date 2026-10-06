@@ -25,7 +25,7 @@
         <svg class="bi" aria-hidden="true">
             <use xlink:href="#cart"></use>
         </svg>
-        Products
+        Produtos
         </a>
     </li>
     <li class="nav-item">
