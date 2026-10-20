@@ -12,7 +12,7 @@
     $dao = new PagamentoDAO();
 
     //Invocar o termo create
-    $dao->create($Pagamento);
+    $dao->create($pagamento);
 
     //Redirecionar para o index (comentar caso não funcione)
     header('Location: index.php');

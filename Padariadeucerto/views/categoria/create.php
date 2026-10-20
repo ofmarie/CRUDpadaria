@@ -359,16 +359,16 @@
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
-            <h1 class="h2">Cadastrar Pagamento</h1>
-        
+            <h1 class="h2">Cadastrar Categoria</h1>
+
           </div>
           
           
           <div class="table-responsive small">
             <form action="insert.php" method="post">
                 <div class="form-group">
-                    <label for="tipoPagamento">tipoPagamento</label>
-                    <input type="text" name="tipoPagamento" class="form-control">
+                    <label for="tipoCategoria">tipoCategoria</label>
+                    <input type="text" name="tipoCategoria" class="form-control">
                 </div>
                
                 <div class="form-group">

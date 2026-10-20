@@ -374,11 +374,9 @@
           <div class="table-responsive small">
             <form action="update.php" method="post">
                 <div class="form-group">
-                    <label for="nome">Tipo Categoria</label>
-                    <input type="text" name="tipoPagamento" value="<?=  $categoria->getTipoPagamento() ?>" class="form-control">
+                     <label for="telefone">Descrição</label>
+                    <input type="text" name="descricao" value="<?=  $categoria->getDescricao() ?>" class="form-control">
                 </div>
-                
-               
 
                 <input type="hidden" name="id" value="<?=  $categoria->getId() ?>">
 

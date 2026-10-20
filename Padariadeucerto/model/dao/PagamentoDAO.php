@@ -5,8 +5,8 @@
             //  foi copiado as atualizações do cliente para esta pasta!
             try{
                 $query = BD::getConexao()->prepare("INSERT INTO pagamento(tipo_pagamento) 
-                VALUES (:t) ");
-                $query->bindValue(':t', $pagamento->getTipoPagamento(), PDO::PARAM_STR);
+                VALUES (:p) ");
+                $query->bindValue(':p', $pagamento->getTipoPagamento(), PDO::PARAM_STR);
 
                 if(!$query->execute()) {
                     print_r($query->errorInfo());
@@ -72,9 +72,9 @@
            
             try{
                 $query = BD::getConexao()->prepare("UPDATE pagamento 
-                SET tipo_pagamento = :t WHERE id_pagamento = :i");
+                SET tipo_pagamento = :p WHERE id_pagamento = :i");
                 $query->bindValue(':i', $id->getId(), PDO::PARAM_INT);
-                $query->bindValue(':t', $pagamento->getTipoPagamento(), PDO::PARAM_STR);
+                $query->bindValue(':p', $pagamento->getTipoPagamento(), PDO::PARAM_STR);
 
                 if(!$query->execute()) {
                     print_r($query->errorInfo());

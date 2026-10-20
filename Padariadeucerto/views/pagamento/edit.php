@@ -378,8 +378,6 @@
                     <input type="text" name="tipoPagamento" value="<?=  $pagamento->getTipoPagamento() ?>" class="form-control">
                 </div>
                 
-               
-
                 <input type="hidden" name="id" value="<?=  $pagamento->getId() ?>">
 
                 <div class="form-group">

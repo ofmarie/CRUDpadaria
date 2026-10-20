@@ -1,13 +1,12 @@
 <?php
-    // Incluir o arquivo para carregamento das classes
-    require "../../autoload.php";
+    //incluir oarquivo para carregamento dasclasses
+    require"../../autoload.php";
 
-    // Instanciar um objeto da classe DAO
+    //instanciar um objeto da classes DAO
     $dao = new PagamentoDAO();
-?>
 
-<!doctype html>
-<html lang="en" data-bs-theme="auto">
+?> <!doctype html>
+<html lang="pt-br" data-bs-theme="auto">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,6 +25,7 @@
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
     <meta name="theme-color" content="#712cf9" />
     <link href="../../css/dashboard.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -367,23 +367,35 @@
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
-            <h1 class="h2">Gerenciamento de Pagamento</h1>
+            <h1 class="h2">Padaria Gerenciamento de Pagamento</h1>
             
           </div>
+          <p>
+            <a href="create.php">Novo Pagamento</a>
+          </p>
           
           <div class="table-responsive small">
-            <table class="table table-hover">
+          <table class='table table-hover'>
+            <tr>
+                <th>ID</th>
+                <th>Tipo Pagamento</th>
+                
+            </tr>
+            <?php foreach($dao->read() as $pagamento) : ?>
                 <tr>
-                    <th>ID</th>
-                    <th>TipoPagamento</th>
+                    <td><?= $pagamento->getId() ?></td>
+                    <td><?= $pagamento->getTipoPagamento() ?></td>
+                    <td>
+                      <a  title="Editar" href="edit.php?id=<?= $pagamento->getId() ?>">
+                        <i class="bi bi-pencil-square"></i>
+                      </a>
+                      <a title="Excluir" class="link-danger"  href="destroy.php?id=<?= $pagamento->getId() ?>">
+                        <i class="bi bi-trash3"></i>
+                      </a>
+                    </td>
                 </tr>
-                <?php foreach($dao->read() as $pagamento) : ?>
-                    <tr>
-                        <td><?= $pagamento->getId() ?></td>
-                        <td><?= $pagamento->getTipoPagamento() ?></td>
-                    </tr>
-                <?php endforeach ?>
-            </table>
+            <?php endforeach ?>
+          </table>
           </div>
         </main>
       </div>

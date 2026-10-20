@@ -371,7 +371,7 @@
             
           </div>
           <p>
-            <a href="create.php">Novo Clente</a>
+            <a href="create.php">Novo Cliente</a>
           </p>
           
           <div class="table-responsive small">

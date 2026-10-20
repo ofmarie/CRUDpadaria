@@ -11,5 +11,5 @@
     $dao->destroy($id);
 
     //redirecionar para index 
-    header('Location : index.php');
+    header('Location: index.php');
 ?>
