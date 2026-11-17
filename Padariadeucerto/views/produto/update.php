@@ -2,7 +2,7 @@
     // Incluir o arquivo de autoload
     require "../../autoload.php";
 
-    // Instanciar um objeto da classe produto (bean)
+    // Instanciar um objeto da classe produto$produto (bean)
     $produto = new Produto();
 
     // Definir os valores dos atributos a partir do form
@@ -10,10 +10,17 @@
     $produto->setPreco($_POST['preco']);
     $produto->setId($_POST['id']);
 
+    // Instanciar um objeto da Categoria
+    $categoria = new Categoria();
+    $categoria->setId($_POST['id_categoria']);
+
+    // Definir a categoria no produto$produto
+    $produto->setCategoria($categoria);
+
     // Instanciar um objeto da classe filmeDAO
     $dao = new ProdutoDAO();
 
-    // Invocar o método create
+    // Invocar o método update
     $dao->update($produto);
 
     // Redirecionar para o index (COMENTAR CASO NÃO FUNCIONE)

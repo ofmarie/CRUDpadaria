@@ -379,6 +379,7 @@
             <tr>
                 <th>ID</th>
                 <th>Tipo Pagamento</th>
+                <th>Ações</th>
                 
             </tr>
             <?php foreach($dao->read() as $pagamento) : ?>

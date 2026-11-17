@@ -7,7 +7,7 @@
                     VALUES (:d, :p, :c)"
                 );
                 $query->bindValue(':d', $produto->getDescricao(), PDO::PARAM_STR);
-                $query->bindValue(':p', $produto->getPreco(), PDO::PARAM_INT);
+                $query->bindValue(':p', $produto->getPreco(), PDO::PARAM_STR);
                 // Bind para a chave estrangeira
                 $query->bindValue(':c', $produto->getCategoria()->getId(), PDO::PARAM_INT);
 
@@ -50,6 +50,8 @@
             }            
         }
 
+        
+
         public function find($id) {
             try {
                 $query = BD::getConexao()->prepare(
@@ -66,6 +68,10 @@
                     $produto->setId($linha['id_produto']);
                     $produto->setDescricao($linha['descricao']);
                     $produto->setPreco($linha['preco']);
+                    // Atributo da associação (com Categoria)
+                    $daoCategoria = new CategoriaDAO();
+                    $categoria = $daoCategoria->find($linha['id_categoria']);
+                    $produto->setCategoria($categoria);
                     
                 }
                 
@@ -80,12 +86,14 @@
             try {
                 $query = BD::getConexao()->prepare(
                     "UPDATE produto
-                    SET descricao = :d, preco = :p,
+                    SET descricao = :d, preco = :p, id_categoria = :c
                     WHERE id_produto = :i"
                 );
                 $query->bindValue(':d', $produto->getDescricao(), PDO::PARAM_STR);
-                $query->bindValue(':p', $produto->getPreco(), PDO::PARAM_INT);
+                $query->bindValue(':p', $produto->getPreco(), PDO::PARAM_STR);
+                $query->bindValue(':c', $produto->getCategoria()->getId(), PDO::PARAM_INT);
                 $query->bindValue(':i', $produto->getId(), PDO::PARAM_INT);
+                
 
                 if(!$query->execute()) {
                     print_r($query->errorInfo());

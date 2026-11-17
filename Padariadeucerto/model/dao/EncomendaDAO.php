@@ -4,10 +4,10 @@
             try {
                 $query = BD::getConexao()->prepare(
                     "INSERT INTO encomenda(data_pedido, data_retirada, id_cliente, id_pagamento) 
-                    VALUES (:dp, :dr, :c, :p)"
+                    VALUES (:d, :r, :c, :p)"
                 );
-                $query->bindValue(':dp', $encomenda->getDataPedido(), PDO::PARAM_STR);
-                $query->bindValue(':dr', $encomenda->getDataRetirada(), PDO::PARAM_INT);
+                $query->bindValue(':d', $encomenda->getDataPedido(), PDO::PARAM_STR);
+                $query->bindValue(':r', $encomenda->getDataRetirada(), PDO::PARAM_STR);
                 // Bind para a chave estrangeira
                 $query->bindValue(':c', $encomenda->getCliente()->getId(), PDO::PARAM_INT);
                 $query->bindValue(':p', $encomenda->getPagamento()->getId(), PDO::PARAM_INT);
@@ -31,7 +31,7 @@
 
                 $listarEncomenda = array();
                 foreach($query->fetchAll(PDO::FETCH_ASSOC) as $linha) {
-                    $encomenda = new Produto(); // Classe bean
+                    $encomenda = new Encomenda(); // Classe bean
                     $encomenda->setId($linha['id_encomenda']);
                     $encomenda->setDataPedido($linha['data_pedido']);
                     $encomenda->setDataRetirada($linha['data_retirada']);
@@ -67,7 +67,7 @@
                 }
 
                 if($linha = $query->fetch(PDO::FETCH_ASSOC)) {
-                    $encomenda = new Produto(); // Classe bean
+                    $encomenda = new Encomenda(); // Classe bean
                     $encomenda->setId($linha['id_encomenda']);
                     $encomenda->setDataPedido($linha['data_pedido']);
                     $encomenda->setDataRetirada($linha['data_retirada']);
@@ -85,11 +85,11 @@
             try {
                 $query = BD::getConexao()->prepare(
                     "UPDATE encomenda
-                    SET data_pedido = :dp, data_retirada = :dr,
+                    SET data_pedido = :d, data_retirada = :r,
                     WHERE id_encomenda = :i"
                 );
-                $query->bindValue(':dp', $encomenda->getDataPedido(), PDO::PARAM_STR);
-                $query->bindValue(':dr', $encomenda->getDataRetirada(), PDO::PARAM_INT);
+                $query->bindValue(':d', $encomenda->getDataPedido(), PDO::PARAM_INT);
+                $query->bindValue(':r', $encomenda->getDataRetirada(), PDO::PARAM_INT);
                 $query->bindValue(':i', $encomenda->getId(), PDO::PARAM_INT);
 
                 if(!$query->execute()) {

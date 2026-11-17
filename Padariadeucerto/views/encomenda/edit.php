@@ -373,15 +373,51 @@
           <div class="table-responsive small">
             <form action="update.php" method="post">
                 <div class="form-group">
-                    <label for="data_pedido">Data Pedido</label>
-                    <input type="text" name="data_pedido" value="<?= $encomenda->getDataPedido() ?>" class="form-control">
+                    <label for="data_pedido">data_pedido</label>
+                    <input type="date" name="data_pedido" value="<?= $encomenda->getDataPedido() ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="data_retirada">Data Retirada</label>
-                    <input type="text" name="data_retirada" value="<?= $encomenda->getDataRetirada() ?>" class="form-control">
+                    <input type="date" name="data_retirada" value="<?= $encomenda->getDataRetirada() ?>" class="form-control">
+                </div>
+               
+               <div class="form-group">
+                  <label for="id_cliente">Cliente</label>
+                  <select name="id_cliente" class="form-control">
+                    <?php foreach($daoCliente->read() as $cliente) : ?>
+                      <?php if($cliente->getId() == $encomenda->getCliente()->getId()) : ?>
+                        <option selected value="<?= $cliente->getId() ?>">
+                          <?= $cliente->getDataPedido() ?>
+                        </option>
+                      <?php else : ?>
+                        <option value="<?= $cliente->getId() ?>">
+                          <?= $cliente->getDataRetirada() ?>
+                        </option>
+                      <?php endif ?>
+                    <?php endforeach ?>
+                  </select>
+                </div> 
+
+                <div class="form-group">
+                  <label for="id_pagamento">Pagamento</label>
+                  <select name="id_pagamento" class="form-control">
+                    <?php foreach($daoPagamento->read() as $pagamento) : ?>
+                      <?php if($pagamento->getId() == $encomenda->getPagamento()->getId()) : ?>
+                        <option selected value="<?= $pagamento->getId() ?>">
+                          <?= $pagamento->getDataPedido() ?>
+                        </option>
+                      <?php else : ?>
+                        <option value="<?= $pagamento->getId() ?>">
+                          <?= $pagamento->getTipoPagamento() ?>
+                        </option>
+                      <?php endif ?>
+                    <?php endforeach ?>
+                  </select>
                 </div>
 
-                <input type="hidden" name="id" value="<?= $encomenda->getId() ?>">
+                <div>
+                  <input type="hidden" name="id" value="<?= $encomenda->getId() ?>">
+                </div>
 
                 <div class="form-group">
                     <input type="reset" value="Limpar" class="btn">

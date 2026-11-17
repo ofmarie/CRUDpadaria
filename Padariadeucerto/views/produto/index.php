@@ -43,7 +43,7 @@
       .b-example-divider {
         width: 100%;
         height: 3rem;
-        background-color: #0000001a;
+        background-color: #d884fa86;
         border: solid rgba(0, 0, 0, 0.15);
         border-width: 1px 0;
         box-shadow:
@@ -76,19 +76,19 @@
         -webkit-overflow-scrolling: touch;
       }
       .btn-bd-primary {
-        --bd-violet-bg: #712cf9;
+        --bd-violet-bg: #2cf9d7;
         --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
         --bs-btn-font-weight: 600;
         --bs-btn-color: var(--bs-white);
         --bs-btn-bg: var(--bd-violet-bg);
         --bs-btn-border-color: var(--bd-violet-bg);
         --bs-btn-hover-color: var(--bs-white);
-        --bs-btn-hover-bg: #6528e0;
-        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-hover-bg: #2cf9d7;
+        --bs-btn-hover-border-color: #2cf9d7;
         --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
         --bs-btn-active-color: var(--bs-btn-hover-color);
-        --bs-btn-active-bg: #5a23c8;
-        --bs-btn-active-border-color: #5a23c8;
+        --bs-btn-active-bg: #2cf9d7;
+        --bs-btn-active-border-color: #2cf9d7;
       }
       .bd-mode-toggle {
         z-index: 1500;
@@ -379,10 +379,11 @@
             <table class="table table-hover">
                 <tr>
                     <th>ID</th>
-                    <th>Descricao</th>
-                    <th>Preco</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
                     <th>Categoria</th>
                     <th>Ações</th>
+                    
                 </tr>
                 <?php foreach($dao->read() as $produto) : ?>
                     <tr>

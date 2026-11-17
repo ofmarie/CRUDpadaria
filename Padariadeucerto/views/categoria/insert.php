@@ -16,6 +16,4 @@
 
     //Redirecionar para o index (comentar caso não funcione)
     header('Location: index.php');
-
-
 ?>

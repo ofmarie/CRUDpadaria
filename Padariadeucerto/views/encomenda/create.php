@@ -374,11 +374,11 @@
             <form action="insert.php" method="post">
                 <div class="form-group">
                     <label for="data_pedido">Data Pedido</label>
-                    <input type="text" name="data_pedido" class="form-control">
+                    <input type="date" name="data_pedido" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="data_retirada">Data Retirada</label>
-                    <input type="text" name="data_retirada" class="form-control">
+                    <input type="date" name="data_retirada" class="form-control">
                 </div>
 
                 <div class="form-group">

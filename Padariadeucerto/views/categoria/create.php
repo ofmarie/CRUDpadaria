@@ -367,8 +367,8 @@
           <div class="table-responsive small">
             <form action="insert.php" method="post">
                 <div class="form-group">
-                    <label for="tipoCategoria">tipoCategoria</label>
-                    <input type="text" name="tipoCategoria" class="form-control">
+                    <label for="descricao">Descricao</label>
+                    <input type="text" name="descricao" class="form-control">
                 </div>
                
                 <div class="form-group">

@@ -384,14 +384,15 @@
                     <th>Cliente</th>
                     <th>Pagamento</th>
                     <th>Ações</th>
+                    
                 </tr>
                 <?php foreach($dao->read() as $encomenda) : ?>
                     <tr>
                         <td><?= $encomenda->getId() ?></td>
                         <td><?= $encomenda->getDataPedido() ?></td>
                         <td><?= $encomenda->getDataRetirada() ?></td>
-                        <td><?= $encomenda->getCliente()->getDataPedido() ?></td>
-                        <td><?= $encomenda->getPagamento()->getDataPedido() ?></td>
+                        <td><?= $encomenda->getCliente()->getNome() ?></td>
+                        <td><?= $encomenda->getPagamento()->getTipoPagamento() ?></td>
                         <td>
                           <a title="Editar" href="edit.php?id=<?= $encomenda->getId() ?>">
                             <i class="bi bi-pencil"></i>

@@ -1,8 +1,10 @@
 <?php
-    require "../../autoload.php";
+  require "../../autoload.php";
 
-    $dao = new ProdutoDAO();
-    $produto = $dao->find($_GET['id']);
+  $dao = new ProdutoDAO();
+  $produto = $dao->find($_GET['id']);
+
+  $daoCategoria = new CategoriaDAO();
 ?>
 
 <!doctype html>
@@ -347,7 +349,7 @@
           >
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="sidebarMenuLabel">
-                Company name
+                Padaria
               </h5>
               <button
                 type="button"
@@ -378,10 +380,29 @@
                 </div>
                 <div class="form-group">
                     <label for="preco">Preço</label>
-                    <input type="text" name="preco" value="<?= $produto->getPreco() ?>" class="form-control">
+                    <input type="double" name="preco" value="<?= $produto->getPreco() ?>" class="form-control">
+                </div>
+               
+                <div class="form-group">
+                  <label for="id_categoria">Categoria</label>
+                  <select name="id_categoria" class="form-control">
+                    <?php foreach($daoCategoria->read() as $categoria) : ?>
+                      <?php if($categoria->getId() == $produto->getCategoria()->getId()) : ?>
+                        <option selected value="<?= $categoria->getId() ?>">
+                          <?= $categoria->getDescricao() ?>
+                        </option>
+                      <?php else : ?>
+                        <option value="<?= $categoria->getId() ?>">
+                          <?= $categoria->getDescricao() ?>
+                        </option>
+                      <?php endif ?>
+                    <?php endforeach ?>
+                  </select>
                 </div>
 
-                <input type="hidden" name="id" value="<?= $produto->getId() ?>">
+                <div>
+                  <input type="hidden" name="id" value="<?= $produto->getId() ?>">
+                </div>
 
                 <div class="form-group">
                     <input type="reset" value="Limpar" class="btn">

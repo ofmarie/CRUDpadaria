@@ -377,7 +377,7 @@
                 </div>
                 <div class="form-group">
                     <label for="preco">Preço</label>
-                    <input type="text" name="preco" class="form-control">
+                    <input type="number" name="preco" class="form-control">
                 </div>
 
                 <div class="form-group">
